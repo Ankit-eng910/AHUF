@@ -38,7 +38,7 @@ class BillSerializer(serializers.ModelSerializer):
         return None
     
     def get_cart_items(self, obj):
-        cart_items = OutletCart.objects.filter(booking=obj.booking, is_active=True)
+        cart_items = OutletCart.objects.filter(booking=obj.booking)
         return OutletCartSerializer(cart_items, many=True).data
 
 #==============================recent orders========================
