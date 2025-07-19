@@ -1,8 +1,5 @@
 
-#-------------------------------Table Booking System-----------------------------------------------------
-
-# models.py
-# from Ahuf_app.models import *
+#=====================================Table Booking System=============================================
 from django.utils import timezone
 from django.db import models
 from django.conf import settings
@@ -49,7 +46,7 @@ class Booking(models.Model):
 
 
 
-#######----------------add to cart-----------------------------------------------------
+#=========================add to cart===============================================================
 class OutletCart(models.Model):
     booking = models.ForeignKey(Booking, on_delete=models.CASCADE)
     menu_item = models.ForeignKey('Ahuf_app.MenuItem', on_delete=models.CASCADE)

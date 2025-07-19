@@ -20,5 +20,4 @@ urlpatterns = [
     path('pay-and-generate-bill/', PaymentAndGenerateBillAPIView.as_view(), name='pay-generate-bill'),
     path('bill/<int:pk>/', BillDetailAPIView.as_view(), name='bill-detail'),
     path('recent-orders/', RecentUnpaidOrdersAPIView.as_view(), name='recent-orders'),
-    # path("add-cart/" , Add_To_Cart.as_view() , name='addCart'),
 ]

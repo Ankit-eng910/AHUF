@@ -57,7 +57,7 @@ class BookingListCreateAPIView(APIView):
             }, status=201)
         return Response(serializer.errors, status=400)
     
-
+#==================================AddToCartAndUpdateItem==================================
 class AddToCartAPIView(APIView):
     def post(self, request):
         booking_id = request.data.get("booking_id")
@@ -139,7 +139,7 @@ class AddToCartAPIView(APIView):
         }, status=200)
     
 
-
+#==========================================get cart=======================================
 
 class CartDetailAPIView(APIView):
     def get(self, request, booking_id):
@@ -200,7 +200,7 @@ class DeleteCartItemAPIView(APIView):
             return Response({"success": False, "message": "Cart item not found"}, status=404)
 
         return Response({"success": True, "message": "Item(s) removed from cart"})
-
+#====================================confirm booking============================================
 class ConfirmBookingAPIView(APIView):
     def post(self, request):
         booking_id = request.data.get('booking_id')
@@ -234,7 +234,7 @@ class ConfirmBookingAPIView(APIView):
         })
 
 
-#--------------------fetch menuitem-------------------------------------------
+#================================fetch menuitem===========================================================
 class getmenudata(APIView):
     def get(self,request):
         menu_id=request.query_params.get('menu_id')
@@ -246,7 +246,7 @@ class getmenudata(APIView):
                          "menu_data":serializer.data
                          },status=200)
 
-#========================payment======================================
+#========================payment=============================================================
 
 class PaymentAndGenerateBillAPIView(APIView):
     def post(self, request):
@@ -337,7 +337,7 @@ class BillDetailAPIView(APIView):
 
 
 
-#=====================recentorders==========================
+#=====================recentorders=======================================================
 
 class RecentUnpaidOrdersAPIView(APIView):
     def get(self, request):

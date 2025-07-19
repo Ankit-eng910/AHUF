@@ -23,7 +23,7 @@ class OutletCartSerializer(serializers.ModelSerializer):
         return obj.plate_option.plate_type if obj.plate_option else None
 
 
-########### ------------------bill-------------------------
+#==================================-bill========================================================================
 class BillSerializer(serializers.ModelSerializer):
     pdf_url = serializers.SerializerMethodField()
     cart_items = serializers.SerializerMethodField()
@@ -41,17 +41,23 @@ class BillSerializer(serializers.ModelSerializer):
         cart_items = OutletCart.objects.filter(booking=obj.booking)
         return OutletCartSerializer(cart_items, many=True).data
 
-#==============================recent orders========================
+#==============================recent orders================================================
 class RecentBookingSerializer(serializers.ModelSerializer):
     table_id= serializers.SerializerMethodField()
     payment_status = serializers.SerializerMethodField()
+    total_amount = serializers.SerializerMethodField()
+
 
     class Meta:
         model = Booking
-        fields = ['id', 'name', 'mobile_no', 'booking_time', 'table_id', 'is_takeaway','payment','payment_status']
+        fields = ['id', 'name', 'mobile_no', 'booking_time', 'table_id', 'is_takeaway','payment','payment_status','total_amount']
 
     def get_table_id(self, obj):
         return obj.table.id if obj.table else None
 
     def get_payment_status(self, obj):
         return "Paid" if obj.payment else "Unpaid"
+    
+    def get_total_amount(self, obj):
+        cart_items = OutletCart.objects.filter(booking=obj, is_active=True)
+        return sum(item.quantity * item.price for item in cart_items)
