@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- =========Bootstrap=============== -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
+  <!-- ==============Swiper Slider=========================== -->
+  <!-- <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css"> -->
+  <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}" />
+  <!-- ====================Font Awesom Icons===================================== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- <link rel="stylesheet" href="./assets/css/style.css"> -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/about-contact.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/combo-page.css' %}" />
+  <link rel="icon" href="{% static 'images/logo.svg' %}" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- <link rel="stylesheet" href="./assets/css/about-contact.css"> -->
+  <title>Home Page</title>
+
+  <!--  %%%%%%%%%%%%%%%%%%% SEO Meta Tags Set %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+  <meta property="og:title" content=" " />
+  <meta property="og:site_name" content="ahufcafe" />
+  <meta property="og:url" content="https://ahufcafe.com/" />
+  <meta property="og:description" content="" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
+  <link rel="canonical" href="https://ahufcafe.com" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!--  %%%%%%%%%%%%%%%%%%% SEO Meta Tags Set End %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+
+</head>
+
+<body>
+  
+  <!-- ===========================Header=========================================== -->
+  <!-- <header class="nav-container">
+    <div class="nav-logo">
+      <a href="{% url 'home' %}"><img src="{% static 'images/logo.svg' %}" alt="logo" /></a>
+    </div>
+
+    <div class="mobile-icons">
+      <i class="bi bi-grid-fill open-menu"></i>
+        <a href="{% url 'combo' %}" class="text-decoration-none">
+            <div class="party-catering-btn">Party Catering</div>
+          </a>
+        {% if not user.is_authenticated %}
+        <a href="{% url 'login-page' %}">
+          <div class="nav-apply-btn"><img src="{% static 'images/login-icon.png' %}" alt="login icon" /></div>
+        </a>
+        {% else %}
+        <a href="{% url 'pro' %}" class="text-decoration-none text-dark">
+          <div class="nav-apply-btn ms-2" style="margin-top:17.5px"><img
+              src="{% static 'images/iconamoon_profile-fill.png' %}" alt="login icon" />
+
+          </div>
+          <div style="font-size:11px;font-weight:500;margin-top:0px">{{ user.phone_number }}</div>
+
+        </a>
+        {% endif %}
+
+
+      
+
+    </div>
+
+    <div class="background"></div>
+
+    <div class="nav-link-container">
+      <i class="bi bi-x-circle close-menu"></i>
+      <ul class="nav-links">
+         <li class="nav-link-item">
+          <a href="{% url 'combo' %}">
+            <div class="party-catering-btn">Party Catering</div>
+          </a>
+        </li>
+        
+        <li class="nav-link-item">
+          <form action="">
+            <input type="text" class="navbar-search-box" id="searchInput" placeholder="Search" />
+            <a><i class="bi bi-search navbar-search-icon" onclick="seachedMenuItems(event)"></i></a>
+          </form>
+        </li>
+        <li class="nav-link-item desktop-apply-btn">
+          {% if not user.is_authenticated %}
+          <a href="{{ request.scheme }}://{{ request.get_host }}{% url 'login-page' %}">
+            <div class="nav-apply-btn"><img src="{% static 'images/login-icon.png' %}" alt="login icon" /></div>
+          </a>
+          {% else %}
+          <a href="{% url 'pro' %}" class="text-decoration-none text-dark" style="display:block;position:relative">
+            <div class="nav-apply-btn"><img src="{% static 'images/iconamoon_profile-fill.png' %}" alt="login icon" />
+            </div>
+
+          </a>
+          <div style="font-size:11px;font-weight:500;margin-top:0px;position:absolute; top:57px;left:-5px">{{user.phone_number}}</div>
+
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  </header> -->
+
+
+
+  <!-- ===========================Header=========================================== -->
+  <header class="nav-container">
+    <div class="nav-logo">
+      <a href="{% url 'home' %}"><img src="{% static 'images/logo.svg' %}" alt="logo" /></a>
+    </div>
+    <!-- MOBILE: Menu + Apply Buttons (login/wp) -->
+    <div class="mobile-icons">
+      <div class="dropdown combo-party-container">
+        <a href="#" class="d-flex align-items-center text-decoration-none text-dark dropdown-toggle"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="{% static 'images/combo-icon.png' %}" alt="icon" class="img-fluid header-icons-size">
+          <span class="header-content-show-view ms-1">Combos & Party</span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Combos</a></li>
+          <li><a class="dropdown-item" href="{% url 'combo' %}">Party Catering</a></li>
+        </ul>
+      </div>
+      <a href="#" class="text-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSearch"
+        aria-controls="offcanvasSearch">
+        <img src="{% static 'images/search-icon.png' %}" alt="icon" class="header-icons-size">
+      </a>
+      {% if not user.is_authenticated %}
+      <a href="{{ request.scheme }}://{{ request.get_host }}{% url 'login-page' %}"
+        class="text-center text-decoration-none text-dark">
+        <img src="{% static 'images/icon-in.png' %}" alt="icon" class="header-icons-size"><br>
+
+      </a>
+      {% else %}
+      <a href="{% url 'pro' %}" class="text-center text-decoration-none text-dark">
+        <img src="{% static 'images/user-login-icon.png' %}" alt="icon" class="header-icons-size mt-4"><br>
+        <span class="header-content-show-view">{{user.phone_number}}</span>
+      </a>
+      {% endif %}
+    </div>
+    <!-- NAVIGATION LINKS -->
+    <div class="nav-link-container">
+      <i class="bi bi-x-circle close-menu"></i>
+      <ul class="nav-links">
+        <li class="nav-link-item desktop-apply-btn">
+          <a href="{% url 'combo' %}">
+            <div class="text-center">
+              <img src="{% static 'images/party-icon.png' %}" alt="icon" class="header-icons-size"><br>
+              <span class="header-content-show-view">Party Catering</span>
+            </div>
+          </a>
+        </li>
+        <li class="nav-link-item desktop-apply-btn">
+          <a href="#">
+            <div class="text-center">
+              <img src="{% static 'images/combo-icon.png' %}" alt="icon" class="header-icons-size"><br>
+              <span class="header-content-show-view">Combos</span>
+            </div>
+          </a>
+        </li>
+        <li class="nav-link-item desktop-apply-btn">
+          <a href="#">
+            <div class="text-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSearch"
+              aria-controls="offcanvasSearch">
+              <img src="{% static 'images/search-icon.png' %}" alt="icon" class="header-icons-size"><br>
+              <span class="header-content-show-view">Search</span>
+            </div>
+          </a>
+        </li>
+        <li class="nav-link-item desktop-apply-btn">
+          {% if not user.is_authenticated %}
+          <a href="{{ request.scheme }}://{{ request.get_host }}{% url 'login-page' %}">
+            <div class="text-center">
+              <img src="{% static 'images/icon-in.png' %}" alt="icon" class="header-icons-size"><br>
+              <span class="header-content-show-view">Log In</span>
+            </div>
+          </a>
+          {% else %}
+          <a href="{% url 'pro' %}">
+            <div class="text-center">
+              <img src="{% static 'images/user-login-icon.png' %}" alt="icon" class="header-icons-size"><br>
+              <span class="header-content-show-view">{{user.phone_number}}</span>
+            </div>
+          </a>
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  </header>
+  <!-- ===============================Search Offcanvas============================================= -->
+  <div class="offcanvas offcanvas-top h-100" tabindex="-1" id="offcanvasSearch" aria-labelledby="offcanvasSearchLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasSearchLabel">Search here...</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form action="">
+        <div class="d-flex align-items-center gap-2">
+          <input type="text" class="form-control" placeholder="search...">
+          <button class="search-button-show-vw">Search</button>
+        </div>
+      </form>
+      <h6 class="mt-5 mb-3"><b>Related Searches</b></h6>
+      <div class="row">
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================View Cart============================= -->
+  <section>
+    <div class="desktop-cart-item-show none-display">
+      <div class="review-box">
+        <div class="review-show-image">
+        </div>
+        <div class="rating">
+          <div class="view-cart viewCart">
+            <small><b class="show-count">3 items</b></small>
+            <a href="{% url 'viewCart-page' %}" class="text-decoration-none">
+              <h6 class="change-name">View Cart</h6>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- -----------------Mobile View Cart Item------------------------ -->
+    <!-- <div class="mobile-cart-item-show none-display">
+      <div class="review-box-mobile viewCart">
+        <a href="{% url 'viewCart-page' %}">
+          <i class="fa-solid fa-cart-plus fs-1 mt-2"></i>
+          <div class="item-number ">3</div>
+        </a>
+      </div>
+    </div> -->
+  </section>
+  <!-- ================================Banner=================================== -->
+  <section>
+    <div class="title-headings mb-4 mt-3">
+      <img src="{% static 'images/leaves-icon.png' %}" alt="icon" />
+      <h2>
+        W<span>e</span>lc<span>o</span>me <span>T</span>o A<span>H</span>UF
+      </h2>
+    </div>
+
+
+    <div class="position-relative">
+      <!-- Left navigation -->
+      {% comment %} <button id="scrollLeftBtn" class="scroll-btn left d-none d-md-block"
+        onclick="scrollCombo('left')">&#10094;</button> {% endcomment %}
+
+      <div class="mt-4 d-flex gap-2 justify-content-evenly party-combo-slide-container overflow-auto flex-nowrap px-2"
+        id="comboSlider">
+        {% for category in categories %}
+
+        <a onclick="loadSubCategories({{ category.id }},event)" class="text-decoration-none">
+          <div id="{{category.id}}" class="single-combo-item combo-item">
+            <img src="{{ category.imageUrl }}" class=" combo-item text-center" style="cursor: pointer; min-width: 80px;">
+            <p class="mt-2">{{ category.name }}</p>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+      <!-- Right navigation -->
+      {% comment %} <button id="scrollRightBtn" class="scroll-btn right d-none d-md-block"
+        onclick="scrollCombo('right')">&#10095;</button> {% endcomment %}
+    </div>
+  </section>
+  <!-- ======================================Our Menu============================================================= -->
+  <section class="our-menu-container">
+    <div class="container">
+
+      <div class="desktop-menu-container-show">
+        <div class="tab" id="subcategory-tabs">
+          <button class="tablinks" onclick="openMenu(event, 'all-recipes' ,3)" id="defaultOpen">All</button>
+
+        </div>
+
+        <!-- Loader -->
+        <div class="tab-loader text-center mt-5" id="tabLoader">
+          <div class="container mt-5">
+            <div class="row">
+              <div class="col-md-3 text-center">
+                <span class="loader"></span>
+              </div>
+              <div class="col-md-3 text-center">
+                <span class="loader"></span>
+              </div>
+              <div class="col-md-3 text-center">
+                <span class="loader"></span>
+              </div>
+              <div class="col-md-3 text-center">
+                <span class="loader"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div id="menu-container"></div>
+      </div>
+      <!-- =============Mobile Menu Slider=============== -->
+      <div class="mobile-menu-container-show">
+        <!-- <div class="dropdown text-end mt-3 mb-3">
+          <button class="our-menu-filter-box dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Our Menu
+          </button>
+          <ul id="our-menu-container" class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">All Recipes</a></li>
+          </ul>
+        </div> -->
+
+        <!-- ------------Filter Menu----------------- -->
+
+
+
+
+        <div class="mobile-cart-item-show">
+          <div id="menu-container1" class="row g-1">
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- ===================================Special Offer=================================================== -->
+  <section class="mt-5">
+    <div class="container-fluid">
+      <div class="swiper testimonial-slider mt-3">
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide">
+            <div class="offer-banner-slider">
+              <img src="https://cdn.grabon.in/gograbon/images/category/1546252575451.png" alt="img" class="img-fluid">
+              <div class="copy-icon"><i class="fa-solid fa-copy"></i></div>
+              <div class="copy-text">lorem123</div>
+              <div class="copy-popup">Copied!</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="offer-banner-slider">
+              <img src="https://cdn.grabon.in/gograbon/images/category/1546252575451.png" alt="img" class="img-fluid">
+              <div class="copy-icon"><i class="fa-solid fa-copy"></i></div>
+              <div class="copy-text">lorem123</div>
+              <div class="copy-popup">Copied!</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="offer-banner-slider">
+              <img src="https://cdn.grabon.in/gograbon/images/category/1546252575451.png" alt="img" class="img-fluid">
+              <div class="copy-icon"><i class="fa-solid fa-copy"></i></div>
+              <div class="copy-text">lorem123</div>
+              <div class="copy-popup">Copied!</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="offer-banner-slider">
+              <img src="https://cdn.grabon.in/gograbon/images/web-images/uploads/1618575517942/food-coupons.jpg"
+                alt="img" class="img-fluid">
+              <div class="copy-icon"><i class="fa-solid fa-copy"></i></div>
+              <div class="copy-text">lorem123</div>
+              <div class="copy-popup">Copied!</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="offer-banner-slider">
+              <img src="https://www.bdtask.com/blog/uploads/restaurant-food-combo-offers.jpg" alt="img"
+                class="img-fluid">
+              <div class="copy-icon"><i class="fa-solid fa-copy"></i></div>
+              <div class="copy-text">lorem123</div>
+              <div class="copy-popup">Copied!</div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="offer-banner-slider">
+              <img src="https://graphicsfamily.com/wp-content/uploads/edd/2021/07/Food-Offer-Banner-Design-Template.jpg"
+                alt="img" class="img-fluid">
+              <div class="copy-icon"><i class="fa-solid fa-copy"></i></div>
+              <div class="copy-text">lorem123</div>
+              <div class="copy-popup">Copied!</div>
+            </div>
+          </div>
+        </div>
+        <!-- <div class="swiper-button-next testimonial-next-btn"></div>
+
+      <div class="swiper-button-prev testimonial-prev-btn"></div> -->
+      </div>
+    </div>
+  </section>
+  <!-- =================================Recommanded Recipes====================================== -->
+  <section class="mt-5">
+    <div class="container">
+      <div class="title-headings mb-4">
+        <img src="{% static 'images/leaves-icon.png' %}" alt="icon" />
+        <h2>R<span>e</span>commended <span>F</span>or <span>Y</span>ou</h2>
+      </div>
+
+
+      <div id="recomded" class="row desktop-cart-item-show">
+
+
+
+
+      </div>
+
+
+      <div class="mobile-cart-item-show">
+        <div class="row g-2 recommand-box-showview">
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================Combos Meal===================================================================== -->
+  <section class="mt-5">
+    <div class="container">
+      <div class="title-headings mb-4">
+        <img src="{% static 'images/leaves-icon.png' %}" alt="icon" />
+        <h2>Com<span>bo</span> Meals <span>&</span> Custom <span>Pac</span>kages</h2>
+      </div>
+
+      <div id='multiple-combo-product' class="row g-2">
+        <div class="col-xl-3 col-lg-3 col-md-3 col-6 mt-4">
+          <div class="new-home-page-card-container"
+            style="background:url('https://azestforlife.com/wp-content/uploads/2023/04/04.24.23-Spring_Vegetable_Fried_Rice_05-2.jpg') center/cover no-repeat;">
+            <div class="ribbon">
+              Premium Options
+            </div>
+
+            <div class="home-info-details">
+              <div class="d-flex justify-content-between align-items-baseline">
+                <div>
+                  <h1>Lorem, ipsum dolor.</h1>
+                  <p class="rating">4.5 <i class="bi bi-star-fill text-warning"></i> <span>(10 Reviews)</span></p>
+                </div>
+                <a href="#" class="text-decoration-none">
+                  <div class="share-icon">
+                    <i class="fa-solid fa-share-nodes"></i>
+                  </div>
+                </a>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <p class="card-price"> &#8377;320 <span>&#8377;400</span></p>
+                <div class="d-flex justify-content-between align-items-center rounded-3">
+                  <button class="quantity-btn-show new-quantity-decrease-icon">
+                    −
+                  </button>
+                  <input type="text" name="" value="1" readonly class="quantity-input-value2" />
+                  <button class="quantity-btn-show new-quantity-decrease-icon">
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-6 mt-4">
+          <div class="new-home-page-card-container"
+            style="background:url('https://omnivorescookbook.com/wp-content/uploads/2023/06/230515_Vegetable-Fried-Rice_550-500x500.jpg') center/cover no-repeat;">
+            <div class="ribbon">
+              Premium Options
+            </div>
+
+            <div class="home-info-details">
+              <div class="d-flex justify-content-between align-items-baseline">
+                <div>
+                  <h1>Lorem, ipsum dolor.</h1>
+                  <p class="rating">4.5 <i class="bi bi-star-fill text-warning"></i> <span>(10 Reviews)</span></p>
+                </div>
+                <a href="#" class="text-decoration-none">
+                  <div class="share-icon">
+                    <i class="fa-solid fa-share-nodes"></i>
+                  </div>
+                </a>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <p class="card-price"> &#8377;320 <span>&#8377;400</span></p>
+                <div class="d-flex justify-content-between align-items-center rounded-3">
+                  <button class="quantity-btn-show new-quantity-decrease-icon">
+                    −
+                  </button>
+                  <input type="text" name="" value="1" readonly class="quantity-input-value2" />
+                  <button class="quantity-btn-show new-quantity-decrease-icon">
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-6 mt-4">
+          <div class="new-home-page-card-container"
+            style="background:url('https://purendesi.in/wp-content/uploads/2024/05/Hakka-Noodles-Recipe.jpg') center/cover no-repeat">
+            <div class="ribbon">
+              Premium Options
+            </div>
+
+            <div class="home-info-details">
+              <div class="d-flex justify-content-between align-items-baseline">
+                <div>
+                  <h1>Lorem, ipsum dolor.</h1>
+                  <p class="rating">4.5 <i class="bi bi-star-fill text-warning"></i> <span>(10 Reviews)</span></p>
+                </div>
+                <a href="#" class="text-decoration-none">
+                  <div class="share-icon">
+                    <i class="fa-solid fa-share-nodes"></i>
+                  </div>
+                </a>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <p class="card-price"> &#8377;320 <span>&#8377;400</span></p>
+                <div class="d-flex justify-content-between align-items-center rounded-3">
+                  <button class="quantity-btn-show new-quantity-decrease-icon">
+                    −
+                  </button>
+                  <input type="text" name="" value="1" readonly class="quantity-input-value2" />
+                  <button class="quantity-btn-show new-quantity-decrease-icon">
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-3 col-md-3 col-6 mt-4">
+          <div class="new-home-page-card-container"
+            style="background:url('https://chaitrascreations.com/wp-content/uploads/2020/05/DSC_9226_edited-scaled.jpg') center/cover no-repeat">
+            <div class="ribbon">
+              Premium Options
+            </div>
+
+            <div class="home-info-details">
+              <div class="d-flex justify-content-between align-items-baseline">
+                <div>
+                  <h1>Lorem, ipsum dolor.</h1>
+                  <p class="rating">4.5 <i class="bi bi-star-fill text-warning"></i> <span>(10 Reviews)</span></p>
+                </div>
+                <a href="#" class="text-decoration-none">
+                  <div class="share-icon">
+                    <i class="fa-solid fa-share-nodes"></i>
+                  </div>
+                </a>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <p class="card-price"> &#8377;320 <span>&#8377;400</span></p>
+                <div class="d-flex justify-content-between align-items-center rounded-3">
+                  <button class="quantity-btn-show new-quantity-decrease-icon">
+                    −
+                  </button>
+                  <input type="text" name="" value="1" readonly class="quantity-input-value2" />
+                  <button class="quantity-btn-show new-quantity-decrease-icon">
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-6 mt-4">
+          <div class="new-home-page-card-container"
+            style="background:url('https://azestforlife.com/wp-content/uploads/2023/04/04.24.23-Spring_Vegetable_Fried_Rice_05-2.jpg') center/cover no-repeat;">
+            <div class="ribbon">
+              Premium Options
+            </div>
+
+            <div class="home-info-details">
+              <div class="d-flex justify-content-between align-items-baseline">
+                <div>
+                  <h1>Lorem, ipsum dolor.</h1>
+                  <p class="rating">4.5 <i class="bi bi-star-fill text-warning"></i> <span>(10 Reviews)</span></p>
+                </div>
+                <a href="#" class="text-decoration-none">
+                  <div class="share-icon">
+                    <i class="fa-solid fa-share-nodes"></i>
+                  </div>
+                </a>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <p class="card-price"> &#8377;320 <span>&#8377;400</span></p>
+                <div class="d-flex justify-content-between align-items-center rounded-3">
+                  <button class="quantity-btn-show new-quantity-decrease-icon">
+                    −
+                  </button>
+                  <input type="text" name="" value="1" readonly class="quantity-input-value2" />
+                  <button class="quantity-btn-show new-quantity-decrease-icon">
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-6 mt-4">
+          <div class="new-home-page-card-container"
+            style="background:url('https://omnivorescookbook.com/wp-content/uploads/2023/06/230515_Vegetable-Fried-Rice_550-500x500.jpg') center/cover no-repeat;">
+            <div class="ribbon">
+              Premium Options
+            </div>
+
+            <div class="home-info-details">
+              <div class="d-flex justify-content-between align-items-baseline">
+                <div>
+                  <h1>Lorem, ipsum dolor.</h1>
+                  <p class="rating">4.5 <i class="bi bi-star-fill text-warning"></i> <span>(10 Reviews)</span></p>
+                </div>
+                <a href="#" class="text-decoration-none">
+                  <div class="share-icon">
+                    <i class="fa-solid fa-share-nodes"></i>
+                  </div>
+                </a>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <p class="card-price"> &#8377;320 <span>&#8377;400</span></p>
+                <div class="d-flex justify-content-between align-items-center rounded-3">
+                  <button class="quantity-btn-show new-quantity-decrease-icon">
+                    −
+                  </button>
+                  <input type="text" name="" value="1" readonly class="quantity-input-value2" />
+                  <button class="quantity-btn-show new-quantity-decrease-icon">
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-xl-3 col-lg-3 col-md-3 col-6 mt-4">
+          <div class="new-home-page-card-container"
+            style="background:url('https://purendesi.in/wp-content/uploads/2024/05/Hakka-Noodles-Recipe.jpg') center/cover no-repeat">
+            <div class="ribbon">
+              Premium Options
+            </div>
+
+            <div class="home-info-details">
+              <div class="d-flex justify-content-between align-items-baseline">
+                <div>
+                  <h1>Lorem, ipsum dolor.</h1>
+                  <p class="rating">4.5 <i class="bi bi-star-fill text-warning"></i> <span>(10 Reviews)</span></p>
+                </div>
+                <a href="#" class="text-decoration-none">
+                  <div class="share-icon">
+                    <i class="fa-solid fa-share-nodes"></i>
+                  </div>
+                </a>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <p class="card-price"> &#8377;320 <span>&#8377;400</span></p>
+                <div class="d-flex justify-content-between align-items-center rounded-3">
+                  <button class="quantity-btn-show new-quantity-decrease-icon">
+                    −
+                  </button>
+                  <input type="text" name="" value="1" readonly class="quantity-input-value2" />
+                  <button class="quantity-btn-show new-quantity-decrease-icon">
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3 col-lg-3 col-md-3 col-6 mt-4">
+          <div class="new-home-page-card-container"
+            style="background:url('https://chaitrascreations.com/wp-content/uploads/2020/05/DSC_9226_edited-scaled.jpg') center/cover no-repeat">
+            <div class="ribbon">
+              Premium Options
+            </div>
+
+            <div class="home-info-details">
+              <div class="d-flex justify-content-between align-items-baseline">
+                <div>
+                  <h1>Lorem, ipsum dolor.</h1>
+                  <p class="rating">4.5 <i class="bi bi-star-fill text-warning"></i> <span>(10 Reviews)</span></p>
+                </div>
+                <a href="#" class="text-decoration-none">
+                  <div class="share-icon">
+                    <i class="fa-solid fa-share-nodes"></i>
+                  </div>
+                </a>
+              </div>
+              <div class="d-flex justify-content-between align-items-center mt-2">
+                <p class="card-price"> &#8377;320 <span>&#8377;400</span></p>
+                <div class="d-flex justify-content-between align-items-center rounded-3">
+                  <button class="quantity-btn-show new-quantity-decrease-icon">
+                    −
+                  </button>
+                  <input type="text" name="" value="1" readonly class="quantity-input-value2" />
+                  <button class="quantity-btn-show new-quantity-decrease-icon">
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+    </div>
+  </section>
+
+
+  <div class="modal fade" id="sharePopModal" tabindex="-1" aria-labelledby="sharePopModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="sharePopModalLabel">Share Item</h1>
+          <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="share-icons-display-show">
+            <div onclick="shareOnWhatsApp()"><img src="{% static 'images/whatsapp-icon.png' %}"
+                class="soical-share-icons-show" alt="icons"></div>
+            <div onclick="shareOnFacebook()"><img src="{% static 'images/facebook-icon.png' %}"
+                class="soical-share-icons-show" alt="icons"></div>
+            <div onclick="shareOnInstagram()"><img src="{% static 'images/insta-icon.png' %}"
+                class="soical-share-icons-show" alt="icons"></div>
+            <div onclick="shareOnTwitter()"><img src="{% static 'images/twitter-icon.png' %}"
+                class="soical-share-icons-show" alt="icons"></div>
+            <div onclick="shareOnEmail()"><img src="{% static 'images/mail-icon.png' %}" class="soical-share-icons-show"
+                alt="icons"></div>
+          </div>
+          <div class="d-flex align-items-center justify-content-center">
+            <div class="share-copy-box-container">
+              <span class="scroll-content" id="share-link">
+                <!-- link will be injected here -->
+              </span>
+            </div>
+            <div class="copy-btn-for-share success pointer-access text-dark" onclick="copyToClipboard()">Copy</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- ====================Copy PopUp============================= -->
+  <div class="main-popup-container" id="popupContainer"></div>
+
+  <!-- ===========================Sticky Menubar========================================= -->
+  <div class="container-fluid ">
+    <div class="sticky-menubar-container ">
+      <span id='span-cont'></span>
+      <div class="text-center none-display box-none">
+        <span style="font-size:13px;font-weight:500 " class="box-count">
+          3 Items
+        </span>
+        <div class="review-show-image">
+
+        </div>
+      </div>
+
+
+      <div class="d-flex justify-content-between align-items-center">
+        <a href="{% url 'viewCart-page' %}" class="text-decoration-none"><span
+            class="view-cart none-display box-none change-name">View Cart</span></a>
+        <span class="left-borderline none-display box-none"></span>
+        <div class="dropdown"><span class="menu-view our-menu-filter-box dropdown-toggle" data-bs-toggle="dropdown"
+            aria-expanded="false"><i class="fa-solid fa-utensils"></i> Menu</span>
+          <ul id="our-menu-container" class="dropdown-menu mb-4">
+            <h6>Recommanded Food</h6>
+            {% for category in categories %}
+            <li class="dropdown-submenu">
+              <div onclick="toggleSubmenu(this)" data-category="{{ category.name }}"
+                class="dropdown-item d-flex justify-content-between align-items-center">
+                <span>
+                  <img src="{{ category.imageUrl }}" alt="image" class="dropdown-menuImage" />
+                  {{ category.name }} ({{ category.subcount }})
+                </span>
+                <i class="bi bi-plus-circle-fill plus-icons shadow-sm" role="button"></i>
+              </div>
+
+              <ul class="dropdown-menu submenu">
+                {% for cat in category.subcategories %}
+                <li><a class="dropdown-item"
+                    onclick="loadSubCategories({{ category.id }} , event, '{{ cat.name|lower|cut:'-'|slugify }}'  , {{ cat.id }})">{{
+                    cat.name }}</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Subcategory 2</a></li> -->
+                {% endfor %}
+              </ul>
+            </li>
+            {% endfor %}
+          </ul>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===========================Track Order========================================= -->
+  {% if trackOrder %}
+  <div class="track-order-icon-show">
+    <a href="{% url 'trackOrder' %}">
+      <img src="{% static 'images/delivery-bike.png' %}" alt="icon" class="img-fluid">
+    </a>
+  </div>
+  {% endif %}
+
+  <!-- ============================================ Footer =============================================== -->
+  <footer class="footer-bg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 mt-3">
+          <div>
+            <img src="{% static 'images/logo.svg' %}" alt="logo" class="img-fluid" />
+          </div>
+          <form action="">
+            <input type="text" placeholder="Enter Your Name" class="footer-input-box" />
+            <input type="email" placeholder="Enter Your Email" class="footer-input-box" />
+            <button class="footer-join-btn">Join Us</button>
+          </form>
+        </div>
+        <div class="col-md-3 col-6 mt-3">
+          <h5 class="footer-main-title">Information</h5>
+          <ul class="footer-list">
+            <li class="footer-list-item"><a href="#">Home</a></li>
+            <li class="footer-list-item"><a href="{% url 'about-page' %}">About</a></li>
+            <li class="footer-list-item"><a href="{% url 'blog-page' %}">Blog</a></li>
+            <li class="footer-list-item"><a href="#">Contact</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 col-6 mt-3">
+          <h5 class="footer-main-title">Helpful Links</h5>
+          <ul class="footer-list">
+            <!-- <li class="footer-list-item"><a href="#">Privacy Policy</a></li>
+            <li class="footer-list-item"><a href="#">FAQs</a></li> -->
+            <li class="footer-list-item"><a href="{% url 'terms&Conditions'%}">Term & Condition</a></li>
+            <li class="footer-list-item"><a href="{% url 'refundPolicy'%}">Refund Policy</a></li>
+          </ul>
+        </div>
+        <div class="col-md-3 mt-3">
+          <div class="d-flex align-items-center mt-4">
+            <i class="bi bi-telephone-fill fs-5"></i>
+            <div class="footer-location-dtls">91+ 9823-5643-78</div>
+          </div>
+          <div class="d-flex align-items-center mt-2">
+            <i class="bi bi-envelope-fill fs-5"></i>
+            <div class="footer-location-dtls">Example@gmail.com</div>
+          </div>
+          <div class="d-flex align-items-center mt-2">
+            <i class="bi bi-geo-alt-fill fs-5"></i>
+            <div class="footer-location-dtls">
+              Bhagwati Nagar IInd, Kartarpura, Jaipur (Raj.) India-302006
+            </div>
+          </div>
+
+          <div class="d-flex align-items-center mt-4">
+            <a href="#">
+              <div class="social-media-icons">
+                <i class="fa-brands fa-facebook-f"></i>
+              </div>
+            </a>
+            <a href="#">
+              <div class="social-media-icons">
+                <i class="fa-brands fa-twitter"></i>
+              </div>
+            </a>
+            <a href="#">
+              <div class="social-media-icons">
+                <i class="fa-brands fa-square-instagram"></i>
+              </div>
+            </a>
+            <a href="#">
+              <div class="social-media-icons">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="text-center">
+      <small><b>Copyright © 2025 AHIT All right reserved</b></small>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+    crossorigin="anonymous"></script>
+  <!-- <script src="./assets/js/swiper-bundle.min.js"></script>
+  <script src="./assets/js/script.js"></script> -->
+  <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+
+  <script src="{% static 'js/in.js' %}">  </script>
+  <script src="{% static 'js/script.js' %}"></script>
+
+
+</body>
+
+</html>

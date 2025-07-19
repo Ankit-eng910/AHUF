@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- =========Bootstrap=============== -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- ==============Swiper Slider=========================== -->
+    {% comment %} <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css"> {% endcomment %}
+    <!-- ====================Font Awesom Icons===================================== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% comment %} <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/about-contact.css"> {% endcomment %}
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/about-contact.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}" />
+    <title>About Page</title>
+</head>
+
+<body>
+    <!-- ===========================Header=========================================== -->
+  <header class="nav-container">
+    <div class="nav-logo">
+      <a href="{% url 'home' %}"><img src="{% static 'images/logo.svg' %}" alt="logo" /></a>
+    </div>
+
+    <!-- MOBILE: Menu + Apply Buttons (login/wp) -->
+    <div class="mobile-icons">
+           <i class="bi bi-grid-fill open-menu"></i>
+             <a href="#"><div class="nav-apply-btn"><img src="{% static 'images/wp-icon.png' %}" alt="wp icon" /></div>
+      {% if not user.is_authenticated %}
+      <a href="{% url 'login-page' %}"><div class="nav-apply-btn"><img src="{% static 'images/login-icon.png' %}"
+            alt="login icon" /></div></a>
+      {% else %}
+      <a href="#" class="text-decoration-none text-dark">
+        <div class="nav-apply-btn ms-2" style="margin-top:17.5px"><img src="{% static 'images/iconamoon_profile-fill.png' %}"
+            alt="login icon" />
+            
+          </div>
+             <div style="font-size:11px;font-weight:500;margin-top:0px">6378911545</div> 
+     
+          </a>
+      {% endif %}
+    
+   
+      </a>
+ 
+    </div>
+
+    <div class="background"></div>
+
+    <!-- NAVIGATION LINKS -->
+    <div class="nav-link-container">
+      <i class="bi bi-x-circle close-menu"></i>
+      <ul class="nav-links">
+        <li class="nav-link-item">
+          <form action="">
+            <input type="text" class="navbar-search-box" id="searchInput" placeholder="Search" />
+            <a><i class="bi bi-search navbar-search-icon" onclick="seachedMenuItems(event)"></i></a>
+          </form>
+        </li>
+
+        <!-- DESKTOP: Apply Icons after search bar -->
+        <li class="nav-link-item desktop-apply-btn">
+          {% if not user.is_authenticated %}
+          <a href="{{ request.scheme }}://{{ request.get_host }}{% url 'login-page' %}"><div class="nav-apply-btn"><img src="{% static 'images/login-icon.png' %}"
+                alt="login icon" /></div></a>
+          {% else %}
+          <a href="#" class="text-decoration-none text-dark" style="display:block;position:relative">
+            <div class="nav-apply-btn"><img src="{% static 'images/iconamoon_profile-fill.png' %}"
+                alt="login icon" /></div>
+                  
+              </a>
+                <div style="font-size:11px;font-weight:500;margin-top:0px;position:absolute; top:57px;left:-5px">6378911545</div>
+
+          {% endif %}
+        </li>
+        <li class="nav-link-item desktop-apply-btn">
+          <a href="#"><div class="nav-apply-btn"><img src="{% static 'images/wp-icon.png' %}" alt="wp icon"
+                class="header-whatsapp-icon" /></div></a>
+        </li>
+      </ul>
+    </div>
+  </header>
+    <!-- ============================About Banner============================ -->
+    <section>
+        <div class="container">
+            <div class="title-headings mb-4">
+                <!-- <img src="./assets/images/leaves-icon.png" alt="icon" style="left:40%"> -->
+                <h2>A<span>b</span>ou <span>t</span> Us</h2>
+            </div>
+
+            <div>
+                <img src="{% static 'images/about-us-banner.png' %}" alt="banner" class="img-fluid">
+            </div>
+        </div>
+    </section>
+    <!-- ============================ About Details============================ -->
+    <section class="about-details-container">
+        <div class="container">
+            <h1>Lorem ipsum dolor sit amet consectetur.</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum autem minus corrupti qui esse quod
+                voluptatum nisi voluptatem, dolores, quia voluptate! Commodi architecto esse aliquam error
+                exercitationem! Culpa facilis autem repudiandae nostrum libero ratione iste, vero odit tenetur repellat!
+                Deserunt cupiditate cumque odit magni temporibus facilis quaerat unde repudiandae? Quas amet optio
+                beatae. Consequuntur nisi earum distinctio iusto vero repudiandae explicabo, repellendus ipsa id quis
+                eius, voluptas cum tenetur pariatur? Unde fugit quae est quam pariatur quo, doloribus minus tempora
+                aspernatur placeat magni natus porro mollitia iste expedita voluptas maiores blanditiis aliquam saepe
+                rerum aliquid incidunt ratione. Ad, ipsam error.</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum autem minus corrupti qui esse quod
+                    voluptatum nisi voluptatem, dolores, quia voluptate! Commodi architecto esse aliquam error
+                    exercitationem! Culpa facilis autem repudiandae nostrum libero ratione iste, vero odit tenetur repellat!
+                    Deserunt cupiditate cumque odit magni temporibus facilis quaerat unde repudiandae? Quas amet optio
+                    beatae. Consequuntur nisi earum distinctio iusto vero repudiandae explicabo, repellendus ipsa id quis
+                    eius, voluptas cum tenetur pariatur? Unde fugit quae est quam pariatur quo, doloribus minus tempora
+                    aspernatur placeat magni natus porro mollitia iste expedita voluptas maiores blanditiis aliquam saepe
+                    rerum aliquid incidunt ratione. Ad, ipsam error.</p>
+                    <h6>Lorem ipsum dolor sit amet.</h6>
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam repellendus ex nihil commodi unde necessitatibus.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam repellendus ex nihil commodi unde necessitatibus.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam repellendus ex nihil commodi unde necessitatibus.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam repellendus ex nihil commodi unde necessitatibus.</li>
+                    </ul>
+        </div>
+    </section>
+    <!-- ============================= From Our Kitchen============================================== -->
+     <section class="mt-5">
+        <div class="container">
+            <div class="title-headings mb-4">
+                <img src="{% static 'images/leaves-icon.png' %}" alt="icon">
+                <h2>F<span>r</span>om O<span>u</span>r Kitchen <span>To</span> Your Screen</h2>
+            </div>
+
+            
+      <div class="swiper our-kitchen-slider mt-3">
+        <div class="swiper-wrapper">
+          <!-- 6 Example Slides -->
+
+          <div class="swiper-slide">
+            <div class="our-kitchen-slider-dtls">
+              <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?cs=srgb&dl=pexels-ash-craig-122861-376464.jpg&fm=jpg" alt="image" class="img-fluid">
+            <div class="play-icon"  data-video="https://www.youtube.com/embed/ST8dAgiQCw8?si=OrBOj4DqiUCgEHXa"><i class="bi bi-play-fill"></i></div>
+              <div class="slider-title-dtls">
+            <div class="title">Rajasthani Thali</div>
+            <div><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></div>
+           </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="our-kitchen-slider-dtls">
+              <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?cs=srgb&dl=pexels-ash-craig-122861-376464.jpg&fm=jpg" alt="image" class="img-fluid">
+            <div class="play-icon"  data-video="https://www.youtube.com/embed/ST8dAgiQCw8?si=OrBOj4DqiUCgEHXa"><i class="bi bi-play-fill"></i></div>
+              <div class="slider-title-dtls">
+            <div class="title">Rajasthani Thali</div>
+            <div><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></div>
+           </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="our-kitchen-slider-dtls">
+              <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?cs=srgb&dl=pexels-ash-craig-122861-376464.jpg&fm=jpg" alt="image" class="img-fluid">
+            <div class="play-icon"  data-video="https://www.youtube.com/embed/ST8dAgiQCw8?si=OrBOj4DqiUCgEHXa"><i class="bi bi-play-fill"></i></div>
+              <div class="slider-title-dtls">
+            <div class="title">Rajasthani Thali</div>
+            <div><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></div>
+           </div>
+            </div>
+          </div>
+          <div class="swiper-slide">
+            <div class="our-kitchen-slider-dtls">
+              <img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg?cs=srgb&dl=pexels-ash-craig-122861-376464.jpg&fm=jpg" alt="image" class="img-fluid">
+            <div class="play-icon"  data-video="https://www.youtube.com/embed/ST8dAgiQCw8?si=OrBOj4DqiUCgEHXa"><i class="bi bi-play-fill"></i></div>
+              <div class="slider-title-dtls">
+            <div class="title">Rajasthani Thali</div>
+            <div><i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i> <i class="bi bi-star-fill"></i></div>
+           </div>
+            </div>
+          </div>
+        </div>
+        <!-- Navigation buttons -->
+
+        <div class="swiper-button-next testimonial-next-btn"></div>
+
+        <div class="swiper-button-prev testimonial-prev-btn"></div>
+      </div>
+<!-- Global video popup -->
+<div class="video-popup" id="videoPopup">
+    <div class="close-icon" id="closeBtn"><i class="bi bi-x-lg"></i></div>
+    <div class="iframe-wrapper">
+      <iframe id="videoIframe" src="" frameborder="0" allowfullscreen allow="autoplay"></iframe>
+    </div>
+  </div>
+        </div>
+     </section>
+    <!-- ============================================ Footer =============================================== -->
+    <footer class="footer-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 mt-3">
+                    <div>
+                        <img src="{% static 'images/logo.svg' %}" alt="logo" class="img-fluid">
+                    </div>
+                    <form action="">
+                        <input type="text" placeholder="Enter Your Name" class="footer-input-box">
+                        <input type="email" placeholder="Enter Your Email" class="footer-input-box">
+                        <button class="footer-join-btn">Join Us</button>
+                    </form>
+                </div>
+                <div class="col-md-3 col-6 mt-3">
+                    <h5 class="footer-main-title">Information</h5>
+                    <ul class="footer-list">
+                        <li class="footer-list-item"><a href="#">Home</a></li>
+                        <li class="footer-list-item"><a href="#">About</a></li>
+                        <li class="footer-list-item"><a href="#">Blog</a></li>
+                        <li class="footer-list-item"><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 col-6 mt-3">
+                    <h5 class="footer-main-title">Helpful Links</h5>
+                    <ul class="footer-list">
+                        <li class="footer-list-item"><a href="#">Privacy Policy</a></li>
+                        <li class="footer-list-item"><a href="#">FAQs</a></li>
+                        <li class="footer-list-item"><a href="#">Term & Condition</a></li>
+                        <li class="footer-list-item"><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mt-3">
+                    <div class="d-flex align-items-center mt-4">
+                        <i class="bi bi-telephone-fill fs-5"></i>
+                        <div class="footer-location-dtls">91+ 9823-5643-78</div>
+                    </div>
+                    <div class="d-flex align-items-center mt-2">
+                        <i class="bi bi-envelope-fill fs-5"></i>
+                        <div class="footer-location-dtls">Example@gmail.com</div>
+                    </div>
+                    <div class="d-flex align-items-center mt-2">
+                        <i class="bi bi-geo-alt-fill fs-5"></i>
+                        <div class="footer-location-dtls">Bhagwati Nagar IInd, Kartarpura, Jaipur (Raj.) India-302006
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mt-4">
+                        <a href="#">
+                            <div class="social-media-icons"><i class="fa-brands fa-facebook-f"></i></div>
+                        </a>
+                        <a href="#">
+                            <div class="social-media-icons"><i class="fa-brands fa-twitter"></i></div>
+                        </a>
+                        <a href="#">
+                            <div class="social-media-icons"><i class="fa-brands fa-square-instagram"></i></div>
+                        </a>
+                        <a href="#">
+                            <div class="social-media-icons"><i class="fa-brands fa-linkedin-in"></i></div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="text-center">
+            <small><b>Copyright © 2025 AHIT All right reserved</b></small>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+        crossorigin="anonymous"></script>
+    {% comment %} <script src="./assets/js/swiper-bundle.min.js"></script>
+    <script src="./assets/js/script.js"></script> {% endcomment %}
+
+    <script src="{% static 'js/swiper-bundle.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script> 
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+  new Swiper(".our-kitchen-slider", {
+    slidesPerView: 2,
+    spaceBetween: 10,
+    speed: 800, // Smooth transition
+    loop: true,
+    grabCursor: true,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    breakpoints: {
+      0: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 2,
+      },
+    },
+  });
+});
+
+const playIcons = document.querySelectorAll('.play-icon');
+  const videoPopup = document.getElementById('videoPopup');
+  const closeBtn = document.getElementById('closeBtn');
+  const videoIframe = document.getElementById('videoIframe');
+
+  playIcons.forEach(icon => {
+    icon.addEventListener('click', () => {
+      const videoUrl = icon.getAttribute('data-video');
+      videoIframe.src = `${videoUrl}?autoplay=1`; // Autoplay when opened
+      videoPopup.style.display = 'flex';
+    });
+  });
+
+  closeBtn.addEventListener('click', () => {
+    videoPopup.style.display = 'none';
+    videoIframe.src = ''; // Stop playback
+  });
+    </script>
+</body>
+
+</html>

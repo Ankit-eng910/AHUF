@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Payment Status</title>
+</head>
+<body>
+    {% for data in payment_data %}
+    {% if data %}
+        <h2>Payment Details</h2>
+        <p><strong>Order ID:</strong> {{ data.order_id }}</p>
+        <p><strong>Status:</strong> {{ data.payment_status }}</p>
+        <p><strong>Amount:</strong> ₹{{ data.order_amount }}</p>
+        <p><strong>Bank Reference:</strong> {{ data.bank_reference }}</p>
+        <p><strong>Payment Id:</strong> {{ data.cf_payment_id }}</p>
+        <p><strong>Payment Captured:</strong> {{ data.is_captured }}</p>
+        <p><strong>Payment Completion Time:</strong> {{ data.payment_completion_time }}</p>
+        <p><strong>UPI ID:</strong> {{ data.payment_method.upi.upi_id }}</p>
+    {% elif error %}
+        <p>{{ error }}</p>
+    {% else %}
+        <p>No data found.</p>
+    {% endif %}
+    {% endfor %}
+</body>
+</html>

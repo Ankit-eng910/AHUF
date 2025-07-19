@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- =========Bootstrap=============== -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- ==============Swiper Slider=========================== -->
+  <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}" />
+  <!-- ====================Font Awesom Icons===================================== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/about-contact.css' %}" />
+  <title>404 Page</title>
+</head>
+
+<body>
+<section class="main-notfound-page-container">
+ <div class="background" id="floatingFood"></div>
+
+  <div class="wrapper">
+    <div class="illustration">
+      <!-- 🍳 SVG Food Illustration -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <circle cx="256" cy="256" r="256" fill="#ffeaa7"/>
+        <path d="M256 96c-66.3 0-120 53.7-120 120s53.7 120 120 120 120-53.7 120-120-53.7-120-120-120zm0 200c-44.2 0-80-35.8-80-80s35.8-80 80-80 80 35.8 80 80-35.8 80-80 80z" fill="#ff6b6b"/>
+        <circle cx="256" cy="216" r="40" fill="#fff"/>
+        <circle cx="256" cy="216" r="20" fill="#feca57"/>
+        <path d="M120 360c-20 20-40 40-20 60s40 0 60-20 20-40 0-60-40 0-40 20z" fill="#feca57"/>
+      </svg>
+    </div>
+
+    <h1>404</h1>
+    <h2>Oops! You're lost in the kitchen.</h2>
+    <p>The recipe you’re looking for might have been moved, renamed, or is still cooking.</p>
+    <a href="{% url 'home' %}" class="btn-home">🍽️ Back to Homepage</a>
+  </div>
+
+</section>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+  
+
+  <script>
+     document.addEventListener("DOMContentLoaded", () => {
+    const foodIcons = ["🍕", "🍔", "🍟", "🍩", "🍣", "🍿", "🍦", "🍗", "🥐", "🌮","🍜","🍝","🥘","🍛"];
+    const background = document.getElementById("floatingFood");
+
+    function createFloatingFood() {
+      const food = document.createElement("div");
+      food.classList.add("not-foundfood");
+      food.innerText = foodIcons[Math.floor(Math.random() * foodIcons.length)];
+      food.style.left = Math.random() * 100 + "vw";
+      food.style.fontSize = (Math.random() * 20 + 20) + "px";
+      food.style.animationDuration = (Math.random() * 10 + 8) + "s";
+      background.appendChild(food);
+
+      setTimeout(() => {
+        food.remove();
+      }, 25000);
+    }
+
+    setInterval(createFloatingFood, 500);
+  });
+  </script>
+</body>
+
+</html>
