@@ -149,7 +149,8 @@ class CartDetailAPIView(APIView):
             return Response({"success": False, "message": "Booking not found"}, status=404)
 
         cart_items = OutletCart.objects.filter(booking=booking)
-        serializer = OutletCartSerializer(cart_items, many=True)
+        serializer = OutletCartSerializer(cart_items, many=True, context={'request': request})
+        # serializer = OutletCartSerializer(cart_items, many=True)
 
         total_price = sum(item.quantity * item.price for item in cart_items)
 
@@ -331,6 +332,7 @@ class BillDetailAPIView(APIView):
         except Bill.DoesNotExist:
             return Response({'detail': 'Bill not found'}, status=status.HTTP_404_NOT_FOUND)
 
+        # serializer = BillSerializer(bill, context={'request': request})
         serializer = BillSerializer(bill, context={'request': request})
         return Response(serializer.data, status=status.HTTP_200_OK)
 

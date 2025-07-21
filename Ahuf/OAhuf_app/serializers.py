@@ -14,10 +14,20 @@ class TableSerializer(serializers.ModelSerializer):
 
 class OutletCartSerializer(serializers.ModelSerializer):
     menu_item_name = serializers.CharField(source='menu_item.name', read_only=True)
+    menu_item_image = serializers.SerializerMethodField()
     plate_type = serializers.SerializerMethodField()
     class Meta:
         model = OutletCart
-        fields = ['id', 'booking', 'menu_item', 'menu_item_name', 'quantity', 'price', 'plate_type']
+        fields = ['id', 'booking', 'menu_item', 'menu_item_name','menu_item_image', 'quantity', 'price', 'plate_type']
+
+    def get_menu_item_image(self, obj):
+        request = self.context.get('request')
+        if request and obj.menu_item and obj.menu_item.imageUrl:
+            return request.build_absolute_uri(obj.menu_item.imageUrl)
+        elif obj.menu_item and obj.menu_item.imageUrl:
+            return obj.menu_item.imageUrl.url
+        return None
+    
 
     def get_plate_type(self, obj):
         return obj.plate_option.plate_type if obj.plate_option else None
@@ -39,8 +49,8 @@ class BillSerializer(serializers.ModelSerializer):
     
     def get_cart_items(self, obj):
         cart_items = OutletCart.objects.filter(booking=obj.booking)
-        return OutletCartSerializer(cart_items, many=True).data
-
+        # return OutletCartSerializer(cart_items, many=True).data
+        return OutletCartSerializer(cart_items, many=True, context=self.context).data
 #==============================recent orders================================================
 class RecentBookingSerializer(serializers.ModelSerializer):
     table_id= serializers.SerializerMethodField()
