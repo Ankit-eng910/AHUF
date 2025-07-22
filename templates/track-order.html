@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+  {% comment %}
+  <link rel="stylesheet" href="./dashboard-css/style.css"> {% endcomment %}
+  <link rel="stylesheet" href="{% static 'css/profiles.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/track-order.css' %}" />
+  <title>Dashboard</title>
+  <style>
+    @media only screen and (max-width:1023.99px) {
+      .main-header-menu-show {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="nav-container main-header-menu-show">
+    <div class="nav-logo">
+      <a href="{% url 'home' %}"><img src="{% static 'images/logo.svg' %}" alt="logo" /></a>
+    </div>
+  </header>
+  <!-- Header for Mobile -->
+  <nav class="navbar navbar-light dashboard-mob-header d-md-none px-3">
+    <a class="navbar-brand" href="{% url 'home' %}"><img src="{% static 'images/ahuf-logo.png' %}" class="logo-img"
+        alt="Logo" /></a>
+    <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSidebar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <!-- Sidebar for Desktop -->
+      <div class="col-md-2 d-none d-md-block sidebar-desktop">
+        <a class="nav-link custom-sidebar-link active" href="{% url 'pro' %}">Basics</a>
+        <a class="nav-link custom-sidebar-link" href="{% url 'orders' %}">My Order</a>
+        <a class="nav-link custom-sidebar-link" href="{% url 'add' %}">Your Address</a>
+        <a class="nav-link custom-sidebar-link" href="{% url 'trackOrder' %}">Track Order</a>
+        <a class="nav-link custom-sidebar-link" href="{% url 'support' %}">Help & Support</a>
+        <a onclick="logoutUser()" class="nav-link custom-sidebar-link logout-show"><i class="bi bi-box-arrow-right"></i>
+          Logout</a>
+      </div>
+
+
+      <!-- Content Area -->
+      <div class="col-md-10 col-12 p-0">
+        <div class="profile-info-container-box">
+          <div class="main-title-of-dashboard">
+            <span class="line-profile"></span>Track Your Order
+          </div>
+        {% if orders|length > 0 %}
+        {% for order in orders %}
+        <div style="border: 1px solid #7e7e7e; padding: 0 20px 15px; border-radius: 20px; margin-top: 10px;">
+          <div class="order-details-main mt-4" >
+            <ul class="p-0">
+              <li>
+                <span class="key">Order ID: </span>
+                <span class="value">{{ order.ahuf_order_id }}</span>
+              </li>
+
+              <li class="mt-2">
+                <span class="key">Customer Name: </span>
+                <span class="value">Rahul Sharma</span>
+              </li>
+
+
+              <li class="mt-2">
+                <span class="key">Place At: </span>
+                <span class="value">{{ order.created_at }}</span>
+              </li>
+
+              <li class="mt-2">
+                <span class="key">Delivery Address:: </span>
+                <span class="value"> {{ order.address.street_address }}, {{ order.address.apartment }},    {{ order.address.postal_code }}, {{ order.address.city }}  </span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="d-flex justify-content-between mt-4 pt-2">
+            {% if  order.order_status == 'In Progress'  %}
+            <div class="order-status text-center next-step active-status">
+            {% else %}
+            <div class="order-status text-center next-step ">
+            {% endif %}
+              <div class="order-status-icon-main">
+                <img src="{% static 'images/confirm-icon.png' %}" alt="" class="order-status-icon" />
+              </div>
+              <h2 class="order-status-heading">Order Confirmed</h2>
+              <p class="order-status-text">Your order has been placed successfully.</p>
+            </div>
+            {% if  order.order_status == 'PREPARING'  %}
+            <div class="order-status text-center next-step active-status">
+            {% elif order.order_status !=  'In Progress' %}
+            <div class="order-status text-center next-step">
+            {% else %}
+            <div class="order-status text-center next-step">
+            {% endif %}
+              <div class="order-status-icon-main">
+                <img src="{% static 'images/preparing.png' %}" alt="" class="order-status-icon" />
+              </div>
+              <h2 class="order-status-heading">Order Preparing</h2>
+              <p class="order-status-text">Your order has been placed successfully.</p>
+            </div>
+            {% if  order.order_status == 'OUT_FOR_DELIVERY'  %}
+            <div class="order-status text-center next-step active-status">
+            {% elif order.order_status != 'DELIVERED' and order.order_status != 'CANCELED' %}
+            <div class="order-status text-center next-step">
+            {% else %}
+            <div class="order-status text-center next-step">
+            {% endif %}
+              <div class="order-status-icon-main">
+                <img src="{% static 'images/location.png' %}" alt="" class="order-status-icon" />
+              </div>
+              <h2 class="order-status-heading">Order On the Way</h2>
+              <p class="order-status-text">Your order has been placed successfully.</p>
+            </div>
+            {% if  order.order_status == 'DELIVERED'  %}
+            <div class="order-status text-center active-status">
+            {% elif order.order_status != 'CANCELED' %}
+            <div class="order-status text-center">
+            {% else %}
+            <div class="order-status text-center ">
+            {% endif %}
+              <div class="order-status-icon-main">
+                <img src="{% static 'images/deliver.png' %}" alt="" class="order-status-icon" />
+              </div>
+              <h2 class="order-status-heading">Order Delivered</h2>
+              <p class="order-status-text">Your order has been placed successfully.</p>
+            </div>
+          </div>
+          
+
+          <div class="mt- order-items">
+            <h2 class="orderItemHeading">Order Items</h2>
+
+            <div class="d-flex gap-3 flex-wrap">
+              {% for cart in order.cart %}
+              <div class="order-item d-flex align-items-center gap-2">
+                <div>
+                  <img class="order-item-image" src="{{ cart.menu_item_details.imageUrl }}" alt="" />
+                </div>
+                <div>
+                  <h5 class="orderItemName">{{ cart.menu_item_details.name }}</h5>
+                  <div>
+                    <span class="sellingPrice">₹{{ cart.menu_item_details.discounted_price }}</span>
+                    <del class="mrpPrice">₹{{ cart.menu_item_details.price }}</del>
+                  </div>
+                </div>
+              </div>
+              {% endfor %}
+
+              
+            </div>
+          </div>
+
+          <div class="d-flex justify-content-between mt-4">
+            <h4 class="total"><b>Total</b></h4>
+            <h4 class="totalAmount">Rs.{{ order.order_amount }}</h4>
+          </div>
+         {% endfor %}
+        {% else %}
+          <section class="no-order-section">
+            <div class="plate">
+              🍽️
+              <div class="floating-icon">🍕</div>
+              <div class="floating-icon">🍔</div>
+              <div class="floating-icon">🍜</div>
+            </div>
+            <div class="no-order-text">No Orders Yet – The Kitchen is Ready!</div>
+          </section>
+        {% endif %}
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Offcanvas Sidebar for Mobile -->
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSidebar">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title">Dashboard</h5>
+      <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas"></button>
+    </div>
+    <div class="offcanvas-body">
+      <a class="nav-link custom-sidebar-link active" href="{% url 'pro' %}">Basics</a>
+      <a class="nav-link custom-sidebar-link" href="{% url 'orders' %}">My Order</a>
+      <a class="nav-link custom-sidebar-link" href="{% url 'add' %}">Your Address</a>
+      <a class="nav-link custom-sidebar-link" href="{% url 'trackOrder' %}">Track Order</a>
+      <a class="nav-link custom-sidebar-link" href="{% url 'support' %}">Help & Support</a>
+      <a onclick="logoutUser()" class="nav-link custom-sidebar-link logout-show"><i class="bi bi-box-arrow-right"></i>
+        Logout</a>
+    </div>
+  </div>
+
+  <div class="bottom-image-wrapper">
+    <img src="{% static 'images/dashboard-bg.png' %}" alt="Food Pattern" class="bottom-image">
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="{% static 'js/profile.js' %}"></script>
+
+</body>
+
+</html>

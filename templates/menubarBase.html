@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+     <!-- =========Bootstrap=============== -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- ==============Swiper Slider=========================== -->
+ 
+    <!-- ====================Font Awesom Icons===================================== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <style>
+             /* ======================================Sticky Menu Bar========================================== */
+    .sticky-menubar-container{
+      width:100%;
+      max-width: 700px;
+      position:fixed;
+      bottom:3px;
+      left:0;
+      /* transform: translateY(-50%); */
+      background-color: #fff;
+      border-radius:45px 45px 0px 0px;
+      z-index: 100;
+      box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding:10px;
+    }
+    .sticky-menubar-container .review-show-image{
+      display: flex;
+    align-items: center;
+    }
+      .sticky-menubar-container .review-show-image img{
+           width: 35px;
+    height: 35px;
+    object-fit: cover;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-left: -10px; /* overlap */
+    border: 2px solid #fff; /* border for clean separation */
+    z-index: 1;
+    transition: transform 0.2s ease;
+      }
+      .sticky-menubar-container .review-show-image img:first-child {
+    margin-left: 0;
+    z-index: 3;
+}
+  .sticky-menubar-container .view-cart{
+    padding:5px 11px;
+    font-size:13px;
+    font-weight: 500;
+    border-radius: 25px;
+    border:solid 1px #EDAF37;
+    color:#000000;
+    text-align: center;
+  }
+    .sticky-menubar-container .menu-view{
+    padding:5px 11px;
+    font-size:13px;
+    font-weight: 500;
+    border-radius: 25px;
+    border:solid 1px #EDAF37;
+    color:#fff;
+    background-color: #EDAF37;
+    text-align: center;
+  }
+  .sticky-menubar-container .left-borderline{
+        border-left:solid 1px rgb(212, 212, 212);
+        width: 1px;
+        height:30px;
+        margin:5px
+  }
+    @media only screen and (min-width:1023.99px){
+      .sticky-menubar-container{
+     display:none;
+    }
+    }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid">
+        <div class="sticky-menubar-container">
+             <div class="text-center">
+               <span style="font-size:13px;font-weight:500">
+                3 Items
+               </span>
+                <div class="review-show-image">
+                    <img src="https://hungrybynature.com/wp-content/uploads/2017/09/pinch-of-yum-workshop-19.jpg" alt="image"/>
+                     <img src="https://hungrybynature.com/wp-content/uploads/2017/09/pinch-of-yum-workshop-19.jpg" alt="image"/>
+                      <img src="https://hungrybynature.com/wp-content/uploads/2017/09/pinch-of-yum-workshop-19.jpg" alt="image"/>
+              </div>
+             </div>
+
+
+               <div class="d-flex justify-content-between align-items-center">
+                <span class="view-cart">View Cart</span>
+                <span class="left-borderline"></span>
+                <span class="menu-view"><i class="fa-solid fa-utensils"></i> Menu</span>
+               </div>
+        </div>
+</div>
+        
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+    crossorigin="anonymous"></script>
+  
+</body>
+
+</html>

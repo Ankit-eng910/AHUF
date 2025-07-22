@@ -1,0 +1,1036 @@
+
+.hero-heading {
+    position: relative;
+}
+.hero-heading-image img{
+  height: auto;
+    width: 88px;
+    position: absolute;
+    top: -41px;
+    left: -28px;
+    z-index: -100;
+
+}
+
+
+.mid-heading h1{
+    font-size: 20px;
+    font-weight: 600;
+    color: black;
+    margin: 0;
+}
+.mid-heading h1 span{
+    color: orange;
+}
+.mid-heading p {
+    font-size: 10px;
+    font-weight: 400;
+    color: black;
+    margin: 0;
+}
+
+.food-categories-section h3{
+  font-size: 15px;
+  font-weight: 500;
+  color: black;
+}
+.food-category-item{
+  flex-wrap: wrap;
+}
+
+.food-categories-section .btn{
+  background-color:#ED8F37 ;
+  font-size: 11px;
+  color: #fff;
+}
+.combo-product-image-show{
+    width:100%;
+    height:150px;
+    border-radius:10px;
+    object-fit: cover;
+}
+.combo-item{
+    text-align: center;
+}
+.active-tag{
+    color:var(--first-color) !important;
+}
+.combo-item p{
+  font-size: 14px;
+  font-weight: 600;
+  color: black;
+  text-align: center;
+  width:100%;
+  max-width: 140px;
+}
+.combo-item img{
+    width:100%;
+    max-width: 110px;
+    height:110px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.food-purchase-item {
+  background-color: #7C7B7B;
+  padding: 19px;
+  border-radius: 25px;
+}
+.featured-food-image{
+  position: relative;
+}
+.featured-food-image img{
+  position: absolute;
+      position: absolute;
+    top: -355px;
+    left: -49px;
+}
+.cocktail-menu-box {
+  border-radius: 25px;
+  background-color: rgba(0, 0, 0, 0.2); /* semi-transparent black */
+  backdrop-filter: blur(10px);          /* blur effect */
+  -webkit-backdrop-filter: blur(10px); 
+  padding: 19px;
+}
+
+.rating h4{
+  font-size: 22px;
+  font-weight: 500;
+  color: #fff;
+  margin: 0;
+}
+.rating p {
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  margin: 0;
+}
+.rating p i {
+  color: yellow;
+}
+.share-icon i{
+background-color: rgb(255, 255, 255,0.4);
+height: 30px;
+width: 30px;
+border-radius: 50px;
+display: flex;
+align-items: center;
+justify-content: center;
+color: #fff;
+}
+
+.price h5{
+  font-size: 23px;
+  font-weight: 500;
+  color: #fff;
+}
+.price h5 del{
+  font-size: 17px;
+  color: #fff;
+  font-weight: 400;
+}
+.quantity-selector button{
+  height: 30px;
+  width: 30px;
+  background-color: #7C7B7B;
+  border-radius: 50px;
+  outline: none;
+  border: none;
+  font-size: 19px;
+  font-weight: 500;
+  color: #fff;
+}
+.quantity-selector span{
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.food-purchase-item {
+  position: relative;
+  display: inline-block;
+}
+.cocktail-menu-box {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.cocktail-menu-header {
+  padding: 19px;
+  background-color: #fff;
+  border: #ED8F37 1px solid;
+  border-radius: 25px;
+  display: block;         /* ✅ change from inline-block */          /* ✅ add this to make it take full width */
+  box-sizing: border-box; 
+   width: 350px;/* ✅ ensures padding doesn't overflow */
+}
+.menu-title h3{
+  font-size: 27px;
+  font-weight: 500;
+  color: black;
+  z-index: 10;
+}
+
+.menu-title h3 span{
+  color: #ED8F37;
+}
+.menu-title{
+  position: relative;
+}
+.menu-title img{
+      position: absolute;
+    left: 93px;
+    height: 60px;
+    width: 60px;
+    top: -15px;
+}
+
+.cocktail-menu-header h5{
+  font-size: 24px;
+  font-weight: 500;
+  color: black;
+  margin: 0;
+}
+
+.dish-info-box h6{
+  margin: 0;
+  font-size: 22px;
+  font-weight: 500;
+  color: black;
+}
+
+.dish-info-box img{
+  height: 60px;
+  width: 60px;
+}
+.cocktail-menu-header button{
+display: block;          /* ✅ Makes width: 100% work */
+  width: 100%;
+  font-size: 19px;
+  font-weight: 500;
+  color: #fff;
+  background-color: #ED8F37;
+  border-radius: 16px;
+  text-align: center;  
+  border: none;
+}
+/* .cocktail-menu-header{
+  display: none;
+} */
+
+ .cocktail-menu-icon i{
+  font-size: 30px;
+  font-weight: 500;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  background-color: gray;
+  display: inline-block;
+  padding: 15px;
+  border-radius: 50px;
+ }
+ .cocktail-menu-section{
+  position: absolute;
+  position: relative;
+top: -700px;
+z-index: 11100;
+ }
+
+.blur-bg::before{
+  content:  "";
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.event-planner-box {
+    padding: 19px;
+    background-color: #fff;
+    border: #ED8F37 1px solid;
+    border-radius: 25px;
+    display: inline-block;
+        position: relative;
+    position: absolute;
+    top: 50%;
+ left: 1%;
+    width: 366px;
+}
+
+.event-header{
+  position: relative;
+}
+.event-header img{
+    position: absolute;
+    left: -3px;
+    height: 60px;
+    width: 60px;
+    top: -15px;
+}
+
+.event-header h5{
+      font-size: 25px;
+    font-weight: 600;
+    color: black;
+    z-index: 100;
+    position: relative;
+    margin: 0;
+
+}
+
+.event-header p{
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+.event-header span{
+  color: #ED8F37;
+}
+
+.icon-back{
+  border: 1px solid #C9C9C9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  align-items: center;
+  height: 40px;
+  width: 40px;
+}
+.icon-back i {
+  font-size: 19px;
+}
+
+.all-select .form-select{
+  outline: none;
+  border: 1px solid #ED8F37;
+  border-radius: 19px;
+  padding: 13px 35px;
+}
+.all-select{
+  position: relative;
+}
+.all-select i {
+  position: absolute; 
+ top: 17px;
+    left: 11px;
+}
+.all-select h4{
+  font-size: 19px;
+  font-weight: 500;
+  color: black;
+}
+.guest-count-controls{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.guest-count-controls span{
+  height:25px;
+  width:40px;
+  border: 1px solid gray;
+  display: inline-block;
+}
+.guest-count-controls button {
+  height: 40px;
+  width: 40px;
+  border-radius: 50px;
+  font-size: 24px;
+  font-weight: 500;
+  background-color: #ED8F37;
+  color: #fff;
+  border: none;
+
+}
+
+.event-planner-box{
+  z-index: 999999;
+}
+.party-page-tab .party-tablinks {
+ background-color: #fff;
+ border:solid 1px var(--first-color);
+  transition: 0.3s;
+  font-size: 15px;
+  font-weight: 500;
+  color:var(--first-color);
+  padding:10px 20px;
+  border-radius: 25px;
+}
+
+/* Change background color of buttons on hover */
+.party-page-tab .party-tablinks:hover {
+  background-color: var(--first-color);
+  color:#fff;
+}
+
+/* Create an active/current tablink class */
+.party-page-tab .party-tablinks.active {
+  background-color: var(--first-color);
+  color:#fff;
+}
+
+.party-tabcontent{
+    display:none
+}
+@media only screen and (max-width:992px){
+    .combo-item p{
+  font-size: 10px;
+  font-weight: 800;
+  max-width: 80px;
+}
+.combo-item img{
+    max-width: 70px;
+    height:70px;
+}
+.party-page-tab .party-tablinks {
+  font-size: 12px;
+  padding:6px 10px;
+}
+}
+@media (min-width: 576px) {
+.hero-heading-image img{
+           width: 100px;
+        top: -42px;
+        left: -15px;
+    }
+
+.mid-heading h1{
+    font-size: 28px;
+}
+.mid-heading p {
+    font-size: 13px;
+}
+.food-categories-section h3 {
+           font-size: 20px;
+}
+.food-categories-section .btn {
+    font-size: 16px;
+}
+
+.food-category-item {
+  flex-wrap: wrap;
+}
+/* .combo-item img{} */
+
+
+.combo-item p {
+    font-size: 16px;
+}
+.featured-food-image img {
+   position: absolute;
+        top: -503px;
+        left: -49px;
+}
+.cocktail-menu-header {
+    padding: 19px;
+    border-radius: 25px;
+    width: 440px;
+
+
+}
+.menu-title img {
+    position: absolute;
+    left: 93px;
+    height: 60px;
+    width: 60px;
+    top: -15px;
+}
+.menu-title h3 {
+    font-size: 27px;
+}
+    .dish-info-box h6 {
+    font-size: 22px;
+}
+.dish-info-box img {
+    height: 60px;
+    width: 60px;
+}
+.cocktail-menu-header button {
+    width: 100%;
+    font-size: 19px;
+    border-radius: 16px;
+}
+.event-header img {
+    left: -3px;
+    height: 60px;
+    width: 60px;
+    top: -15px;
+}
+.event-header h5 {
+    font-size: 25px;
+}
+.event-header p {
+    font-size: 14px;
+}
+.icon-back {
+    height: 40px;
+    width: 40px;
+}
+.all-select .form-select {
+    border-radius: 19px;
+    padding: 13px 35px;
+}
+.guest-count-controls button {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    font-size: 24px;
+}
+.guest-count-controls span {
+    height: 25px;
+    width: 40px;
+}
+.event-planner-box {
+    width: 433px;
+        left: 12%;
+}
+}
+
+@media (min-width: 768px) {
+.hero-heading-image img{
+   width: 128px;
+        top: -49px;
+        left: -16px;
+}
+
+.mid-heading h1{
+    font-size: 38px;
+}
+.mid-heading p {
+    font-size: 16px;
+}
+.food-categories-section h3 {
+    font-size: 30px;
+}
+.food-categories-section .btn {
+    font-size: 18px;
+}
+.food-category-item {
+  flex-wrap: nowrap;
+}
+
+/* .food-category-item {} */
+/* .combo-item img{} */
+
+
+.combo-item p {
+    font-size: 16px;
+}
+.featured-food-image img {
+    position: absolute;
+        top: -340px;
+        left: -49px;
+}
+.cocktail-menu-header {
+    padding: 19px;
+    border-radius: 25px;
+      width: 440px;
+
+
+}
+.menu-title img {
+    position: absolute;
+    left: 93px;
+    height: 60px;
+    width: 60px;
+    top: -15px;
+}
+.menu-title h3 {
+    font-size: 27px;
+}
+
+    .dish-info-box h6 {
+    font-size: 22px;
+}
+.dish-info-box img {
+    height: 60px;
+    width: 60px;
+}
+.cocktail-menu-header button {
+    width: 100%;
+    font-size: 19px;
+    border-radius: 16px;
+}
+.event-header img {
+    left: -3px;
+    height: 60px;
+    width: 60px;
+    top: -15px;
+}
+.event-header h5 {
+    font-size: 25px;
+}
+.event-header p {
+    font-size: 14px;
+}
+.icon-back {
+    height: 40px;
+    width: 40px;
+}
+.all-select .form-select {
+    border-radius: 19px;
+    padding: 13px 35px;
+}
+.guest-count-controls button {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    font-size: 24px;
+}
+.guest-count-controls span {
+    height: 25px;
+    width: 40px;
+}
+.event-planner-box {
+    width: 433px;
+        left: 20%;
+}
+
+}
+
+@media (min-width: 992px) {
+ .hero-heading-image img{
+    width: 150px;
+                  top: -49px;
+        left: 8px;
+}
+
+.mid-heading h1{
+    font-size: 50px;
+}
+.mid-heading p {
+    font-size: 16px;
+}
+.food-categories-section h3 {
+    font-size: 30px;
+}
+.food-categories-section .btn {
+    font-size: 18px;
+}
+
+/* .food-category-item {} */
+/* .combo-item img{} */
+
+.food-category-item {
+  flex-wrap: nowrap;
+}
+.combo-item p {
+    font-size: 16px;
+}
+.featured-food-image img {
+           position: absolute;
+        top: -298px;
+        left: -49px;
+}
+.cocktail-menu-header {
+    padding: 19px;
+     width: 400px;
+    border-radius: 25px;
+}
+.menu-title img {
+    position: absolute;
+    left: 93px;
+    height: 60px;
+    width: 60px;
+    top: -15px;
+}
+.menu-title h3 {
+    font-size: 27px;
+}
+
+    .dish-info-box h6 {
+    font-size: 22px;
+}
+.dish-info-box img {
+    height: 60px;
+    width: 60px;
+}
+.cocktail-menu-header button {
+    width: 100%;
+    font-size: 19px;
+    border-radius: 16px;
+}
+.event-header img {
+    left: -3px;
+    height: 60px;
+    width: 60px;
+    top: -15px;
+}
+.event-header h5 {
+    font-size: 25px;
+}
+.event-header p {
+    font-size: 14px;
+}
+.icon-back {
+    height: 40px;
+    width: 40px;
+}
+.all-select .form-select {
+    border-radius: 19px;
+    padding: 13px 35px;
+}
+.guest-count-controls button {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    font-size: 24px;
+}
+.guest-count-controls span {
+    height: 25px;
+    width: 40px;
+}
+.event-planner-box {
+         width: 376px;
+        left: 31%;
+}
+}
+
+@media (min-width: 1200px) {
+.featured-food-image img {
+    top: -361px;}
+    
+    .hero-heading-image img{
+    width: 150px;
+                  top: -49px;
+        left: 84px;
+}
+
+.mid-heading h1{
+    font-size: 50px;
+}
+.mid-heading p {
+    font-size: 16px;
+}
+.food-categories-section h3 {
+    font-size: 30px;
+}
+.food-categories-section .btn {
+    font-size: 18px;
+}
+
+/* .food-category-item {} */
+/* .combo-item img{} */
+.food-category-item {
+  flex-wrap: nowrap;
+}
+
+.combo-item p {
+    font-size: 16px;
+}
+.featured-food-image img {
+    position: absolute;
+        top: -360px;
+        left: -49px;
+}
+.cocktail-menu-header {
+    padding: 19px;
+    border-radius: 25px;
+  width: 395px;
+}
+.menu-title img {
+    position: absolute;
+    left: 93px;
+    height: 60px;
+    width: 60px;
+    top: -15px;
+}
+.menu-title h3 {
+    font-size: 27px;
+}
+
+    .dish-info-box h6 {
+    font-size: 22px;
+}
+.dish-info-box img {
+    height: 60px;
+    width: 60px;
+}
+.cocktail-menu-header button {
+    width: 100%;
+    font-size: 19px;
+    border-radius: 16px;
+}
+.event-header img {
+    left: -3px;
+    height: 60px;
+    width: 60px;
+    top: -15px;
+}
+.event-header h5 {
+    font-size: 25px;
+}
+.event-header p {
+    font-size: 14px;
+}
+.icon-back {
+    height: 40px;
+    width: 40px;
+}
+.all-select .form-select {
+    border-radius: 19px;
+    padding: 13px 35px;
+}
+.guest-count-controls button {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    font-size: 24px;
+}
+.guest-count-controls span {
+    height: 25px;
+    width: 40px;
+}
+.event-planner-box {
+          width: 400px;
+        left: 33%;
+}
+}
+@media (min-width: 1400px) {
+    .featured-food-image img {
+        top:-424px;
+    }
+
+    .hero-heading-image img{
+    width: 150px;
+            top: -47px;
+    left: 174px;
+}
+
+.mid-heading h1{
+    font-size: 50px;
+}
+.mid-heading p {
+    font-size: 16px;
+}
+.food-categories-section h3 {
+    font-size: 30px;
+}
+.food-categories-section .btn {
+    font-size: 18px;
+}
+
+/* .food-category-item {} */
+/* .combo-item img{} */
+.food-category-item {
+  flex-wrap: nowrap;
+}
+
+.combo-item p {
+    font-size: 16px;
+}
+.featured-food-image img {
+    position: absolute;
+    position: absolute;
+    top: -424px;
+    left: -49px;
+}
+.cocktail-menu-header {
+    padding: 19px;
+    border-radius: 25px;
+   width: 440px;
+}
+.menu-title img {
+    position: absolute;
+    left: 93px;
+    height: 60px;
+    width: 60px;
+    top: -15px;
+}
+.menu-title h3 {
+    font-size: 27px;
+}
+
+    .dish-info-box h6 {
+    font-size: 22px;
+}
+.dish-info-box img {
+    height: 60px;
+    width: 60px;
+}
+.cocktail-menu-header button {
+    width: 100%;
+    font-size: 19px;
+    border-radius: 16px;
+}
+.event-header img {
+    left: -3px;
+    height: 60px;
+    width: 60px;
+    top: -15px;
+}
+.event-header h5 {
+    font-size: 25px;
+}
+.event-header p {
+    font-size: 14px;
+}
+.icon-back {
+    height: 40px;
+    width: 40px;
+}
+.all-select .form-select {
+    border-radius: 19px;
+    padding: 13px 35px;
+}
+.guest-count-controls button {
+    height: 40px;
+    width: 40px;
+    border-radius: 50px;
+    font-size: 24px;
+}
+.guest-count-controls span {
+    height: 25px;
+    width: 40px;
+}
+.event-planner-box {
+    width: 433px;
+       left: 36%;
+}
+}
+
+/* ==================================Popup===================================== */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; 
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.popup {
+  background: white;
+  width: 100%;
+  max-width: 500px;
+   margin: 10px;
+  border-radius: 16px;
+  padding: 20px;
+  position: relative;
+}
+
+.close-btn {
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ddd;
+  border-radius: 50%;
+  border: none;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+}
+
+.section-title {
+  font-weight: bold;
+  margin-top: 10px;
+
+}
+.starter-section-img{
+    width:100%;
+    max-width: 40px;
+    height:40px;
+    border-radius: 50%;
+}
+.starter-list {
+  list-style: none;
+  padding: 0;
+  height:400px;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.starter-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  cursor: pointer;
+
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.action-btn {
+  width: 100%;
+  background: var(--first-color);
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.form-group{
+    display: flex;
+    align-items: center;
+    gap:10px;
+    border:solid 1px #949494;
+    padding:5px 8px;
+    border-radius: 10px;
+}
+.form-group i{
+    color:var(--first-color);
+}
+.form-group .form-select{
+    border:none;
+    outline:none;
+    font-size: 15px;
+    font-weight:500
+}
+.form-group .form-select:focus{
+    border:none;
+    box-shadow: none;
+}
+
+
+
+
+
+/* ==========================Combo Category Slider========================== */
+.party-combo-slide-container {
+  scroll-behavior: smooth;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  /* background: rgba(0,0,0,0.5); */
+  color: #000000;
+  border: none;
+  font-size: 2rem;
+  padding: 5px 10px;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  width:40px;
+  height:40px;
+  font-size: 15px;
+}
+
+.scroll-btn.left {
+  left: 0;
+}
+
+.scroll-btn.right {
+  right: 0;
+}
+
+/* Hide scrollbar on mobile (optional aesthetic) */
+.party-combo-slide-container::-webkit-scrollbar {
+  display: none;
+}

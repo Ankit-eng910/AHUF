@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- =========Bootstrap=============== -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- ==============Swiper Slider=========================== -->
+  {% comment %}
+  <link rel="stylesheet" href="./assets/css/swiper-bundle.min.css"> {% endcomment %}
+  <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css' %}" />
+  <!-- ====================Font Awesom Icons===================================== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  {% comment %}
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/about-contact.css"> {% endcomment %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/about-contact.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/loader.css' %}">
+
+  <link rel="icon" href="{% static 'images/logo.svg' %}" type="image/x-icon">
+  <title>View Cart Page</title>
+</head>
+
+<body>
+  <div class="main-popup-container" id="popupContainer"></div>
+
+  
+  <div class="scatter-loader-section" id="loader">
+    <!-- Scatter emojis -->
+    <div class="scatter" style="--x: -300px; --y: -200px;">🍛</div>
+    <div class="scatter" style="--x: 250px; --y: -180px;">🥦</div>
+    <div class="scatter" style="--x: -200px; --y: 150px;">🧂</div>
+    <div class="scatter" style="--x: 300px; --y: 180px;">🌽</div>
+    <div class="scatter" style="--x: -150px; --y: -250px;">🍕</div>
+    <div class="scatter" style="--x: 200px; --y: 200px;">🧁</div>
+    <div class="scatter" style="--x: -250px; --y: 220px;">🍝</div>
+    <div class="scatter" style="--x: 180px; --y: -200px;">🥘</div>
+    <!-- Center logo + loader -->
+    <div class="center-loader" id="mainLoader">
+      <img src="{% static 'images/logo.svg' %}" alt="Logo">
+      <div id="load">
+        <div>🍛</div>
+        <div>🥦</div>
+        <div>🧂</div>
+        <div>🌽</div>
+        <div>🍕</div>
+        <div>🧁</div>
+        <div>🍝</div>
+        <div>🥘</div>
+      </div>
+    </div>
+  </div>
+  <div id="main-content" style="display: none;">
+
+
+ <!-- ===========================Header=========================================== -->
+  <header class="nav-container">
+    <div class="nav-logo">
+      <a href="{% url 'home' %}"><img src="{% static 'images/logo.svg' %}" alt="logo" /></a>
+    </div>
+    <!-- MOBILE: Menu + Apply Buttons (login/wp) -->
+    <div class="mobile-icons">
+      <div class="dropdown combo-party-container">
+        <a href="#" class="d-flex align-items-center text-decoration-none text-dark dropdown-toggle"
+          data-bs-toggle="dropdown" aria-expanded="false">
+          <img src="{% static 'images/combo-icon.png' %}" alt="icon" class="img-fluid header-icons-size">
+          <span class="header-content-show-view ms-1">Combos & Party</span>
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Combos</a></li>
+          <li><a class="dropdown-item" href="{% url 'combo' %}">Party Catering</a></li>
+        </ul>
+      </div>
+      <a href="#" class="text-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSearch"
+        aria-controls="offcanvasSearch">
+        <img src="{% static 'images/search-icon.png' %}" alt="icon" class="header-icons-size">
+      </a>
+      {% if not user.is_authenticated %}
+      <a href="{{ request.scheme }}://{{ request.get_host }}{% url 'login-page' %}"
+        class="text-center text-decoration-none text-dark">
+        <img src="{% static 'images/icon-in.png' %}" alt="icon" class="header-icons-size"><br>
+
+      </a>
+      {% else %}
+      <a href="{% url 'pro' %}" class="text-center text-decoration-none text-dark">
+        <img src="{% static 'images/user-login-icon.png' %}" alt="icon" class="header-icons-size mt-4"><br>
+        <span class="header-content-show-view">{{user.phone_number}}</span>
+      </a>
+      {% endif %}
+    </div>
+    <!-- NAVIGATION LINKS -->
+    <div class="nav-link-container">
+      <i class="bi bi-x-circle close-menu"></i>
+      <ul class="nav-links">
+        <li class="nav-link-item desktop-apply-btn">
+          <a href="{% url 'combo' %}">
+            <div class="text-center">
+              <img src="{% static 'images/party-icon.png' %}" alt="icon" class="header-icons-size"><br>
+              <span class="header-content-show-view">Party Catering</span>
+            </div>
+          </a>
+        </li>
+        <li class="nav-link-item desktop-apply-btn">
+          <a href="#">
+            <div class="text-center">
+              <img src="{% static 'images/combo-icon.png' %}" alt="icon" class="header-icons-size"><br>
+              <span class="header-content-show-view">Combos</span>
+            </div>
+          </a>
+        </li>
+        <li class="nav-link-item desktop-apply-btn">
+          <a href="#">
+            <div class="text-center" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSearch"
+              aria-controls="offcanvasSearch">
+              <img src="{% static 'images/search-icon.png' %}" alt="icon" class="header-icons-size"><br>
+              <span class="header-content-show-view">Search</span>
+            </div>
+          </a>
+        </li>
+        <li class="nav-link-item desktop-apply-btn">
+          {% if not user.is_authenticated %}
+          <a href="{{ request.scheme }}://{{ request.get_host }}{% url 'login-page' %}">
+            <div class="text-center">
+              <img src="{% static 'images/icon-in.png' %}" alt="icon" class="header-icons-size"><br>
+              <span class="header-content-show-view">Log In</span>
+            </div>
+          </a>
+          {% else %}
+          <a href="{% url 'pro' %}">
+            <div class="text-center">
+              <img src="{% static 'images/user-login-icon.png' %}" alt="icon" class="header-icons-size"><br>
+              <span class="header-content-show-view">{{user.phone_number}}</span>
+            </div>
+          </a>
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  </header>
+  <!-- ===============================Search Offcanvas============================================= -->
+  <div class="offcanvas offcanvas-top h-100" tabindex="-1" id="offcanvasSearch" aria-labelledby="offcanvasSearchLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasSearchLabel">Search here...</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form action="">
+        <div class="d-flex align-items-center gap-2">
+          <input type="text" class="input-box-view" placeholder="search...">
+          <button class="search-button-show-vw">Search</button>
+        </div>
+      </form>
+      <h6 class="mt-5 mb-3"><b>Related Searches</b></h6>
+      <div class="row">
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+        <div class="col-md-6">
+          <a href="#" class="text-decoration-none">
+            <div class="related-searches-content">
+              <div><img
+                  src="https://images.immediate.co.uk/production/volatile/sites/30/2020/08/chorizo-mozarella-gnocchi-bake-cropped-9ab73a3.jpg?quality=90&resize=700,636"
+                  alt="image"></div>
+              <div class="related-search-text-show">Hakka Noddles</div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- ======================= Check out details =========================== ==================-->
+
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3"></div>
+          <div class="col-md-6 mt-4">
+            <!-- Step Progress Bar -->
+            <div class="progress-container mb-4">
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="text-center flex-fill">
+                  <div id="stepIndicator1" class="rounded-circle bg-primary text-white mx-auto mb-2 step-indicator">1
+                  </div>
+                  <div class="progress-step-text">Order Summary</div>
+                </div>
+                <div class="flex-fill border-top mx-2" style="border-width: 2px !important;"></div>
+                <div class="text-center flex-fill">
+                  <div id="stepIndicator2" class="rounded-circle bg-light text-dark mx-auto mb-2 step-indicator">2</div>
+                  <div class="progress-step-text">Delivery Details</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Multi-Step Form -->
+            <div id="multiStepForm">
+              <!-- Step 1 -->
+              <div class="step-content active" id="step1">
+                <div class="first-step-checkout-container">
+                  <div id="card-data">
+
+
+                  </div>
+                  <div id="cart-total">
+                    <!-- <div class="view-cart-invoice-cotainer mt-3">
+                    <h5><b>Invoice</b></h5>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <p><b>Subtotal</b></p>
+                      <p>&#8377;320</p>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <p><b>Discount</b></p>
+                      <p>15%</p>
+                    </div>
+                    <hr>
+                    <div class="d-flex justify-content-between align-items-center">
+                      <p><b>Total</b></p>
+                      <p>&#8377;220</p>
+                    </div>-->
+                  </div>
+
+                  <div class="promo-code-box mt-3">
+                    <input type="text" placeholder="Enter Promo Code" class="input-box-view">
+                    <button class="explore-more rounded-3" onclick="applyCoupon()">Apply</button>
+                  </div>
+                  <div id="promo-code"></div>
+                  <!-- <div class="promo-code-text-container">
+                      <div class="text">Flat 20% OFF and promo code : AHUF200</div>
+                      <i class="fa-solid fa-copy copy-icon-show"></i>
+                    </div>
+                    <div class="promo-code-text-container">
+                      <div class="text">Flat 20% OFF and promo code : AHUF200</div>
+                      <i class="fa-solid fa-copy copy-icon-show"></i>
+                    </div>
+                    <div class="promo-code-text-container">
+                      <div class="text">Flat 20% OFF and promo code : AHUF200</div>
+                      <i class="fa-solid fa-copy copy-icon-show"></i>
+                    </div> -->
+
+                    <div id="sheduled-data-form">
+                      
+                    </div>
+                </div>
+                <button class="btn btn-primary mt-4" >Next</button>
+              </div>
+
+              <!-- Step 2 -->
+              <!-- Step 2: Delivery Details -->
+              <div class="step-content" id="step2">
+                <!-- Address Selection Cards -->
+                <div id="addressSelection">
+                  <div class="row">
+                    {% for addres in  address_data %}
+                    <div class="col-md-6">
+                      
+                        {% if addres.is_default %}
+                          <div class="card border selected-address p-3 rounded mb-3  position-relative adress-cards">
+                        {% else %}
+                          <div class="card border p-3 rounded mb-3  position-relative adress-cards">
+                        {% endif %}
+                              <i class="bi bi-pencil-square position-absolute top-0 end-0 m-2 text-primary"
+                                style="cursor: pointer;" onclick="editSavedAddress({{addres.id}})"></i>
+                              <p><strong>{{ addres.full_name }}</strong></p>
+                              <p>{{addres.street_address}}, {{addres.city}}, {{addres.state_or_region}}, {{addres.postal_code}}</p>
+                              <p>Phone: {{addres.phone_number}}</p>
+
+                          </div>
+                      
+                    </div>
+                    {% endfor %}
+                    <div class="col-md-6">
+                      <div class="border p-3 rounded mb-3 text-center card" style="cursor: pointer;"
+                        onclick="showNewAddressForm()">
+                        <span style="font-size:50px;font-weight: 700;">+</span>
+                        <p>Add New Address</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between align-items-center mt-3">
+                    <div id="addressBottomBackBtn" style="display: block;">
+                      <button class="btn btn-secondary" onclick="prevStep()">Back</button>
+                    </div>
+                    <button class="btn btn-success" onclick="checkOutpay()">Proceed to Pay</button>
+                  </div>
+
+                </div>
+
+                <!-- New Address Form -->
+                <div id="newAddressForm" style="display: none;">
+                  <div class="row">
+
+
+                    <div class="col-md-6 col-6 mt-3">
+                      <label class="input-label-show">Customer Name</label>
+                      <input type="text" id="customerName" placeholder="Enter Your Name" class="input-box-view">
+                    </div>
+                    <div class="col-md-6 col-6 mt-3">
+                      <label class="input-label-show">Customer Contact</label>
+                      <input type="text" id="customerContact" placeholder="Enter Mobile Number" class="input-box-view">
+                    </div>
+                    <div class="col-md-12 col-12 mt-3">
+                      <label class="input-label-show">Email ID</label>
+                      <input type="email" id="customerEmail" placeholder="Enter Your Email ID" class="input-box-view">
+                    </div>
+                    <div class="col-md-4 col-4 mt-3">
+                      <label class="input-label-show">City</label>
+                      <select  id="customerCity" class="input-box-view">
+                        <option value="">Select</option>
+                        <option value="Jaipur">Jaipur</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4 col-4 mt-3">
+                      <label class="input-label-show">State</label>
+                      <select  id="customerState" class="input-box-view">
+                        <option value="">Select</option>
+                        <option value="Rajasthan">Rajasthan</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4 col-4 mt-3">
+                      <label class="input-label-show">Pincode</label>
+                      <input type="text" id="customerPincode" class="input-box-view">
+                    </div>
+                    <div class="col-md-12 col-12 mt-3">
+                      <label class="input-label-show">Home Address</label>
+                      <input type="text" id="customerAddress" class="input-box-view" placeholder="Enter Address">
+                    </div>
+                    <div class="col-md-12 col-12 mt-3">
+                      <label class="input-label-show">Apartment Details</label>
+                      <input type="text" id="customerApartmentAddress" class="input-box-view" placeholder="Enter Details">
+                    </div>
+                 
+                  </div>
+                  <!-- ...continue with the rest of the fields... -->
+                  <div class="d-flex justify-content-between mt-4">
+                    <button class="btn btn-secondary" onclick="backToAddressSelection()">Back</button>
+                    {% comment %} <button class="btn btn-success" onclick="submitForm()">Proceed to Pay</button> {% endcomment %}
+                    <button onclick="addAddress()" class="btn btn-success" style="background-color:var(--first-color);border:solid 1px var(--first-color)">Save Details</button>
+                  </div>
+                </div>
+
+
+
+                <!-- Edit Address Form -->
+                <div id="editAddressForm" style="display: none;">
+                  <div class="row">
+                    <div class="col-md-6 mt-3">
+                      <label class="input-label-show">Customer Name</label>
+                      <input type="text" id="customer-name"   class="input-box-view">
+                    </div>
+                    <div class="col-md-6 mt-3">
+                      <label class="input-label-show">Customer Contact</label>
+                      <input type="text" id="customer-contact"  class="input-box-view">
+                    </div>
+                    <div class="col-md-12 mt-3">
+                      <label class="input-label-show">Email ID</label>
+                      <input type="email" id="email-id"   class="input-box-view">
+                    </div>
+                    <div class="col-md-4 mt-3">
+                      <label class="input-label-show">City</label>
+                      <select class="input-box-view" id="customer-city" >
+                        <option selected>Jaipur</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                      <label class="input-label-show">State</label>
+                      <select class="input-box-view" id="customer-state" >
+                        <option selected>Rajasthan</option>
+                      </select>
+                    </div>
+                    <div class="col-md-4 mt-3">
+                      <label class="input-label-show">Pin Code</label>
+                      <input type="text" id="pin-code"  class="input-box-view">
+                    </div>
+                    <div class="col-md-12 mt-3">
+                      <label class="input-label-show"  >Full Address</label>
+                      <textarea class="input-box-view" rows="3" id="full-address"> </textarea>
+                    </div>
+                    <div class="col-md-12 mt-3">
+                      <label class="input-label-show" >Apartment Address</label>
+                      <textarea class="input-box-view" rows="3" id="apartment-address"> </textarea>
+                    </div>
+                  </div>
+                  <div class="d-flex justify-content-between mt-4">
+                    <button class="btn btn-secondary" onclick="backToAddressSelection()">Back</button>
+                    <button onclick="updateAddress()" class="btn btn-success updatebtncheck">Update Address</button>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-3"></div>
+
+        </div>
+
+
+      </div>
+      <div class="col-md-3">
+
+      </div>
+  </div>
+
+
+
+
+
+  </div>
+  </section>
+
+  </div>
+  <!-- ==============================Footer================================== -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq"
+    crossorigin="anonymous"></script>
+  {% comment %}
+  <script src="./assets/js/swiper-bundle.min.js"></script>
+  <script src="./assets/js/script.js"></script> {% endcomment %}
+  <script src="{% static 'js/swiper-bundle.min.js' %}">  </script>
+  <script src="{% static 'js/script.js' %}"></script>
+  <script src="{% static 'js/cartView.js' %}"></script>
+</body>
+
+</html>
